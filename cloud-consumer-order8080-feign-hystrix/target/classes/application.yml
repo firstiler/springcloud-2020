@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+#---------Application
+
+spring:
+  application:
+    name: cloud-order8080-feign-hystrix
+
+#---------Eureka
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
+#---------OpenFeign
+
+feign:
+  hystrix:
+    enabled: true
+
+#开启hystrix之后 ribbon 超时配置将失效，使用hystrix的降级规则
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000 # 设置hystrix的超时时间为3000ms, 之后才调用降级方法
+
+#开启hystrix之后 ribbon 配置将失效
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 10000
