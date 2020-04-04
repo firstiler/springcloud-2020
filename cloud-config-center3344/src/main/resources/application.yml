@@ -8,12 +8,15 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:firstiler/springcloud-config.git #GitHub上面的git仓库名字
+          uri: https://github.com/firstiler/springcloud-config.git #GitHub上面的git仓库名字
           ####搜索目录
           search-paths:
             - springcloud-config
       ####读取分支
       label: master
+      #最终访问地址：http://localhost:3344/master/config-dev.yml
+
+
 #rabbitmq相关配置
 #rabbitmq:
 #  host: localhost
